@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Axel Rocha – Portfolio</title>
+  <!-- Orbitron + Roboto Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      font-family: 'Orbitron', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    /* Fixed Top Navigation Bar */
+    #toc {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(20,20,20,0.9);
+      padding: 15px 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+    }
+    #toc ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    #toc li {
+      margin: 0;
+    }
+    #toc a {
+      color: #d3d3d3;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+    #toc a:hover {
+      color: #00ccff;
+      text-shadow: 0 0 5px rgba(0,204,255,0.8);
+    }
+    /* Hero Section */
+    #hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background: url('Images_Portfolio/BlackMarble_2016_Asia_composite.png') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+    #hero canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .intro-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: rgba(20,20,20,0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      max-width: 900px;
+    }
+    .intro-container img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-right: 30px;
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+    }
+    #typed-text {
+      font-size: 2rem;
+      color: #ffffff;
+      white-space: pre-wrap;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+    /* Content Sections */
+    .content {
+      padding: 80px 20px;
+      text-align: center;
+      background: #111;
+    }
+    .content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .content p {
+      font-family: 'Roboto', sans-serif;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      color: #d3d3d3;
+      font-size: 1.1rem;
+    }
+    /* Shared layout for each project */
+    .project-layout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 40px auto;
+      background: rgba(20,20,20,0.9);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+    }
+    .project-text {
+      flex: 1 1 60%;
+      min-width: 300px;
+      padding: 20px;
+    }
+    .project-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-transform: none;
+      letter-spacing: 1px;
+    }
+    .project-text p {
+      font-size: 1.1rem;
+      color: #d3d3d3;
+    }
+    .project-image {
+      flex: 1 1 40%;
+      min-width: 300px;
+      padding: 20px;
+      text-align: center;
+    }
+    .project-image img {
+      max-width: 100%;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .project-image img:last-child {
+      margin-bottom: 0;
+    }
+    @media (max-width: 768px) {
+      .project-layout {
+        flex-direction: column;
+      }
+      .project-text, .project-image {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+    /* Experience Section */
+    #experience {
+      background: #111;
+      padding: 80px 20px;
+    }
+    .experience-layout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .experience-text {
+      flex: 1 1 60%;
+      min-width: 300px;
+      padding: 20px;
+      text-align: left;
+    }
+    .experience-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .experience-text ul {
+      list-style: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      color: #d3d3d3;
+    }
+    .experience-text li {
+      margin-bottom: 15px;
+    }
+    .experience-text li strong {
+      color: #ffffff;
+    }
+    .experience-image {
+      flex: 1 1 40%;
+      min-width: 300px;
+      padding: 20px;
+      text-align: center;
+    }
+    .experience-image img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    @media (max-width: 768px) {
+      .experience-layout {
+        flex-direction: column;
+      }
+      .experience-text, .experience-image {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+    /* Contact Section */
+    #contact {
+      padding: 80px 20px;
+      background: #111;
+      text-align: center;
+    }
+    #contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    #contact p {
+      font-family: 'Roboto', sans-serif;
+      color: #d3d3d3;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    #contact a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    #contact a:hover {
+      color: #00ccff;
+      text-shadow: 0 0 5px rgba(0,204,255,0.8);
+    }
+    /* Resume Download Button */
+    .resume-download {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      position: relative;
+    }
+    .resume-button {
+      background: #00ccff;
+      color: #0a0a0a;
+      padding: 12px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,204,255,0.5);
+    }
+    .resume-button:hover {
+      background: #0099cc;
+      transform: scale(1.05);
+    }
+    .rocket-animation {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0;
+      bottom: -30px;
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    }
+    /* Footer */
+    footer {
+      background: #0a0a0a;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Top Navigation Bar -->
+  <nav id="toc">
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </nav>
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="intro-container">
+      <img src="Images_Portfolio/Axel_HeadShot.jpg" alt="Axel Rocha Headshot" />
+      <div id="typed-text"></div>
+    </div>
+  </section>
+  <!-- About Me Section -->
+  <section id="about" class="content">
+    <h2>About Me</h2>
+    <p>
+      I’m Axel Rocha Hernandez, an innovative engineer with a passion for aerospace and cutting-edge technology. My mission is to design reliable, scalable systems that push the boundaries of space exploration. With a strong foundation in avionics, embedded systems, and interdisciplinary problem-solving, I aim to contribute to humanity’s next steps into the cosmos—whether at NASA, SpaceX, or beyond.
+      <br /><br />
+      <strong>Location:</strong> Mission, Texas
+    </p>
+  </section>
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="experience-layout">
+      <div class="experience-text">
+        <h2>Experience</h2>
+        <ul>
+          <li><strong>Amazon Kuiper Systems:</strong> Specialized Hardware Development Engineer Intern</li>
+          <li><strong>UTCRS:</strong> Research Assistant</li>
+          <li><strong>The Rocket Launchers Student Org.:</strong> Principal Hardware Engineer</li>
+          <li><strong>UTRGV College of Engineering and Computer Science:</strong> Outreach Director and Mentor</li>
+          <li><strong>UTRGV College of Engineering and Computer Science:</strong> Tutor across the full electrical engineering spectrum</li>
+        </ul>
+      </div>
+      <div class="experience-image">
+        <img src="Images_Portfolio/HardwareDesign.jpg" alt="Hardware Design Showcase" />
+      </div>
+    </div>
+  </section>
+  <!-- Projects Section -->
+  <section id="projects" class="content">
+    <h2>Projects</h2>
+    <!-- Project 1 -->
+    <div class="project-layout">
+      <div class="project-text">
+        <h2>Ad Astra Avionics</h2>
+        <p>
+          Ad Astra Avionics is a forward-thinking startup dedicated to revolutionizing avionics for rocketry and high-performance engineering. Our plug-and-play systems integrate state-of-the-art hardware and software, delivering real-time telemetry and robust power management to ensure optimal performance. Designed for rocketry teams, hobbyists, and technical clubs—including organizations like Baja Racing—our mission is to empower innovators with reliable, scalable solutions that push the boundaries of aerospace.
+        </p>
+      </div>
+      <div class="project-image">
+        <!-- No images for Project 1 -->
+      </div>
+    </div>
+    <!-- Project 2 -->
+    <div class="project-layout">
+      <div class="project-text">
+        <h2>B.R.U.N.O Avionics computer</h2>
+        <p>
+          B.R.U.N.O Avionics computer is engineered as the central nervous system for advanced aerospace vehicles. With its compact 5x3 inch form factor, dual-microcontroller architecture, high I/O capability, and integrated GPS/LoRa communications, B.R.U.N.O delivers precise real-time data and control for flight-critical applications. Our mission is to provide a robust, scalable platform that meets the rigorous demands of both commercial and experimental flight.
+        </p>
+      </div>
+      <div class="project-image">
+        <img src="Images_Portfolio/B.R.U.N.O.png" alt="B.R.U.N.O" />
+        <img src="Images_Portfolio/B.R.U.N.O_Layout.png" alt="B.R.U.N.O Layout" />
+      </div>
+    </div>
+    <!-- Project 3 -->
+    <div class="project-layout">
+      <div class="project-text">
+        <h2>J.A.X.O.N motor and servo AI Driver</h2>
+        <p>
+          J.A.X.O.N motor and servo AI Driver is an ultra-low cost, high-performance control system leveraging the ESP32 to deliver precise motor and servo control. Utilizing encoder data and powered by a USB-C PD IC for streamlined power management, J.A.X.O.N offers versatile connectivity via serial and I2C—enabling seamless integration with edge AI modules like the Jetson Nano. Built from readily available modules, this innovative solution combines autonomous control capabilities with advanced communication for cutting-edge applications.
+        </p>
+      </div>
+      <div class="project-image">
+        <img src="Images_Portfolio/Screenshot 2025-03-08 at 3.33.19 PM.png" alt="J.A.X.O.N" />
+        <img src="Images_Portfolio/J.A.X.O.N_Layout.png" alt="J.A.X.O.N Layout" />
+      </div>
+    </div>
+  </section>
+  <!-- Contact Me Section -->
+  <section id="contact" class="content">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:axel@frocher.com">axel@frocher.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/axel-rocha-hernandez/" target="_blank">linkedin.com/in/axel-rocha-hernandez/</a></p>
+    <p>Phone: <a href="tel:+19566000895">+1 956 600 0895</a></p>
+    <div class="resume-download">
+      <a href="Resum_Fall_Spring25_Revised.pdf" download="Axel_Rocha_Resume.pdf" class="resume-button">
+        🚀 Download My Resume
+      </a>
+      <div class="rocket-animation" id="rocket">🚀</div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2025 Axel Rocha Hernandez. All Rights Reserved.</p>
+  </footer>
+  <script>
+    // Typewriter Effect for Hero Section
+    const typedText = "Axel Rocha Hernandez";
+    let typedIndex = 0;
+    const typedElement = document.getElementById('typed-text');
+    function type() {
+      if (typedIndex < typedText.length) {
+        typedElement.textContent += typedText.charAt(typedIndex);
+        typedIndex++;
+        setTimeout(type, 100);
+      }
+    }
+    setTimeout(type, 300);
+    // Rocket Animation using JavaScript on click event for Resume Button
+    const resumeButton = document.querySelector('.resume-button');
+    const rocket = document.getElementById('rocket');
+    resumeButton.addEventListener('click', function() {
+      rocket.style.opacity = '1';
+      rocket.style.transform = 'translateY(-100px)';
+      setTimeout(() => {
+        rocket.style.opacity = '0';
+        rocket.style.transform = 'translateY(0)';
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
